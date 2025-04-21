@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Обратный отсчет до свадьбы
     function updateCountdown() {
-        const weddingDate = new Date('August 20, 2024 13:00:00').getTime();
+        const weddingDate = new Date('August 07, 2025 13:00:00').getTime();
         const now = new Date().getTime();
         const distance = weddingDate - now;
         
