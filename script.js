@@ -13,12 +13,45 @@ document.addEventListener('DOMContentLoaded', function() {
             const guests = document.getElementById('guests').value;
             const message = document.getElementById('message').value;
             
-            // Здесь вы можете добавить код для отправки данных на сервер
-            // Например, через fetch API или другой метод
+            // Отображаем индикатор загрузки
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
             
-            // Для демонстрации просто покажем сообщение
-            alert(`Спасибо, ${name}! Ваш ответ принят.`);
-            rsvpForm.reset();
+            // URL вашего Google Apps Script
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbyq7ojbaX_LJEl4r-pDSMO3sJfpH06GjJdrVMRpkFyj1Kddq9h36NROivaAFjWoCiPt/exec';
+            
+            // Отправляем данные через Google Apps Script
+            fetch(scriptUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    phone,
+                    attendance,
+                    guests: parseInt(guests),
+                    message
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Показываем сообщение об успехе
+                alert(`Спасибо, ${name}! Ваш ответ принят.`);
+                rsvpForm.reset();
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+            })
+            .finally(() => {
+                // Восстанавливаем кнопку
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            });
         });
     }
     
