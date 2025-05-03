@@ -72,15 +72,16 @@ h3 {
 }
 
 .announcement {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     font-weight: 500;
     margin: 30px 0;
     font-family: 'Cormorant Garamond', serif;
-    color: var(--color-heading);
+    color: #ff5757;
+    animation: fadeInAndFloat 2s ease-in-out forwards;
 }
 
 .invitation-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.8;
     margin: 30px 0 50px;
     color: var(--color-text);
