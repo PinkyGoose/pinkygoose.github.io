@@ -19,6 +19,7 @@ body {
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-light-bg);
+    font-weight: 300;
 }
 
 .container {
@@ -40,29 +41,30 @@ header {
     margin: 0 auto;
 }
 
-h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--color-heading);
-    letter-spacing: 1px;
-}
-
-h2, h3 {
+h1, h2, h3 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
     color: var(--color-heading);
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin: 15px 0;
+    font-weight: 400;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .intro-text {
@@ -285,17 +287,20 @@ h3 {
 
 /* Примечание о детях */
 .kids-note {
-    font-size: 1.1rem;
-    padding: 40px 20px;
+    padding: 50px 20px;
     background-color: var(--color-light-bg);
     text-align: center;
+}
+
+.kids-note h2 {
+    margin-bottom: 20px;
 }
 
 .kids-note p {
     max-width: 600px;
     margin: 0 auto;
-    color: var(--color-text);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 /* Социальная группа */
@@ -816,4 +821,114 @@ footer p {
 
 .hidden {
     display: none;
+}
+
+/* Стили для секций */
+section {
+    padding: 50px 20px;
+}
+
+section h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* Место проведения */
+.venue-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: var(--color-light-bg);
+}
+
+.venue-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.venue-image-container {
+    position: relative;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.venue-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.venue-image-container:hover .venue-image {
+    transform: scale(1.05);
+}
+
+.venue-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding: 30px 20px 15px;
+    text-align: center;
+}
+
+.venue-name {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.venue-details {
+    padding: 0 20px;
+}
+
+.venue-address {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    color: var(--color-text);
+}
+
+.map-button {
+    display: inline-block;
+    background-color: var(--color-peach);
+    color: var(--color-heading);
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.map-button:hover {
+    background-color: var(--color-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .venue-name {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .venue-overlay {
+        padding: 20px 15px 10px;
+    }
+    
+    .venue-name {
+        font-size: 1.1rem;
+    }
 }
