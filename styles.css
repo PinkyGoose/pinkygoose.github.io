@@ -604,10 +604,10 @@ footer p {
 }
 
 .wedding-day {
-    background-color: var(--color-pink);
+    /* background-color: var(--color-pink); */
     border-radius: 50%;
     font-weight: 600;
-    color: var(--color-heading) !important;
+    color: #ff5757 !important;
     position: relative;
 }
 
