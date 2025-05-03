@@ -4,11 +4,21 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-pink: #f8d7d9;
+    --color-peach: #f9c9a9;
+    --color-yellow: #f9e4c0;
+    --color-mint: #d8e4d5;
+    --color-text: #5a5a5a;
+    --color-heading: #4a4a4a;
+    --color-light-bg: #fff9f5;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: var(--color-text);
+    background-color: var(--color-light-bg);
 }
 
 .container {
@@ -21,7 +31,8 @@ body {
 header {
     text-align: center;
     padding: 60px 20px;
-    background-color: #fff;
+    background-color: var(--color-pink);
+    background: linear-gradient(to bottom, var(--color-pink), var(--color-light-bg));
 }
 
 .header-content {
@@ -34,14 +45,14 @@ h1 {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--color-heading);
     letter-spacing: 1px;
 }
 
 h2, h3 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
-    color: #333;
+    color: var(--color-heading);
 }
 
 h2 {
@@ -57,7 +68,7 @@ h3 {
 .intro-text {
     font-size: 1.1rem;
     margin-bottom: 40px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .names-block {
@@ -69,19 +80,20 @@ h3 {
     font-weight: 500;
     margin: 30px 0;
     font-family: 'Cormorant Garamond', serif;
+    color: var(--color-heading);
 }
 
 .invitation-text {
     font-size: 1.2rem;
     line-height: 1.8;
     margin: 30px 0 50px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .venue-info {
     margin: 50px 0 30px;
     padding: 30px 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .venue-name {
@@ -94,13 +106,13 @@ h3 {
 .venue-address {
     font-size: 1.1rem;
     margin-bottom: 25px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .map-button {
     display: inline-block;
-    background-color: #333;
-    color: white;
+    background-color: var(--color-peach);
+    color: var(--color-heading);
     text-decoration: none;
     padding: 12px 25px;
     border-radius: 4px;
@@ -110,13 +122,14 @@ h3 {
 }
 
 .map-button:hover {
-    background-color: #555;
+    background-color: var(--color-yellow);
 }
 
 /* Таймлайн */
 .timeline {
     padding: 60px 20px;
-    background-color: #f9f9f9;
+    background-color: var(--color-mint);
+    background: linear-gradient(to bottom, var(--color-light-bg), var(--color-mint), var(--color-light-bg));
 }
 
 .timeline-container {
@@ -134,7 +147,7 @@ h3 {
     flex: 0 0 80px;
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: var(--color-heading);
     font-family: 'Cormorant Garamond', serif;
 }
 
@@ -144,7 +157,7 @@ h3 {
 }
 
 .timeline-content p {
-    color: #555;
+    color: var(--color-text);
     margin-bottom: 5px;
 }
 
@@ -152,7 +165,7 @@ h3 {
 .dress-code {
     padding: 60px 20px;
     text-align: center;
-    background-color: #fff;
+    background-color: var(--color-light-bg);
 }
 
 .dress-code h2 {
@@ -162,7 +175,7 @@ h3 {
 .dress-code p {
     max-width: 600px;
     margin: 0 auto 30px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .color-palette {
@@ -176,13 +189,14 @@ h3 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 1px solid #eee;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Детали мероприятия */
 .event-details {
     padding: 60px 20px;
-    background-color: #f9f9f9;
+    background-color: var(--color-yellow);
+    background: linear-gradient(to bottom, var(--color-light-bg), var(--color-yellow), var(--color-light-bg));
     text-align: center;
 }
 
@@ -212,34 +226,34 @@ h3 {
 
 .details-list li {
     margin-bottom: 15px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .special-note {
     margin-top: 30px;
     font-weight: 500;
-    color: #333;
+    color: var(--color-heading);
 }
 
 /* Примечание о детях */
 .kids-note {
     padding: 40px 20px;
-    background-color: #fff;
+    background-color: var(--color-light-bg);
     text-align: center;
 }
 
 .kids-note p {
     max-width: 600px;
     margin: 0 auto;
-    color: #555;
+    color: var(--color-text);
     font-size: 0.95rem;
-    line-height: 1.7;
 }
 
 /* Социальная группа */
 .social-group {
     padding: 60px 20px;
-    background-color: #f9f9f9;
+    background-color: var(--color-peach);
+    background: linear-gradient(to bottom, var(--color-light-bg), var(--color-peach), var(--color-light-bg));
     text-align: center;
 }
 
@@ -250,13 +264,13 @@ h3 {
 .social-group p {
     max-width: 600px;
     margin: 0 auto 30px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .social-button {
     display: inline-block;
-    background-color: #333;
-    color: white;
+    background-color: var(--color-pink);
+    color: var(--color-heading);
     text-decoration: none;
     padding: 12px 30px;
     border-radius: 4px;
@@ -265,13 +279,14 @@ h3 {
 }
 
 .social-button:hover {
-    background-color: #555;
+    background-color: var(--color-yellow);
 }
 
 /* RSVP форма */
 .rsvp {
     padding: 60px 20px;
-    background-color: #fff;
+    background-color: var(--color-pink);
+    background: linear-gradient(to bottom, var(--color-light-bg), var(--color-pink), var(--color-light-bg));
     text-align: center;
 }
 
@@ -282,7 +297,7 @@ h3 {
 .rsvp p {
     max-width: 600px;
     margin: 0 auto 40px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .form-group {
@@ -297,7 +312,7 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: 500;
-    color: #333;
+    color: var(--color-heading);
 }
 
 input[type="text"],
@@ -307,11 +322,12 @@ select,
 textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    color: #333;
+    color: var(--color-text);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .radio-group {
@@ -338,8 +354,8 @@ textarea {
 }
 
 button {
-    background-color: #333;
-    color: white;
+    background-color: var(--color-peach);
+    color: var(--color-heading);
     border: none;
     padding: 14px 40px;
     font-size: 1rem;
@@ -351,13 +367,14 @@ button {
 }
 
 button:hover {
-    background-color: #555;
+    background-color: var(--color-yellow);
 }
 
 /* Контактная информация */
 .contact-info {
     padding: 60px 20px;
-    background-color: #f9f9f9;
+    background-color: var(--color-mint);
+    background: linear-gradient(to bottom, var(--color-light-bg), var(--color-mint), var(--color-light-bg));
     text-align: center;
 }
 
@@ -368,7 +385,7 @@ button:hover {
 .contact-info p {
     max-width: 600px;
     margin: 0 auto 30px;
-    color: #555;
+    color: var(--color-text);
 }
 
 .contact-buttons {
@@ -382,8 +399,8 @@ button:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #333;
-    color: white;
+    background-color: var(--color-peach);
+    color: var(--color-heading);
     text-decoration: none;
     padding: 12px 25px;
     border-radius: 4px;
@@ -408,7 +425,7 @@ button:hover {
 /* Обратный отсчет */
 .countdown {
     padding: 60px 20px;
-    background-color: #fff;
+    background-color: var(--color-light-bg);
     text-align: center;
 }
 
@@ -424,7 +441,7 @@ button:hover {
 }
 
 .time-block {
-    background-color: #f9f9f9;
+    background-color: var(--color-pink);
     padding: 20px;
     min-width: 100px;
     border-radius: 4px;
@@ -434,27 +451,28 @@ button:hover {
     display: block;
     font-size: 2.5rem;
     font-weight: 600;
-    color: #333;
+    color: var(--color-heading);
     font-family: 'Cormorant Garamond', serif;
 }
 
 .label {
     display: block;
     font-size: 0.9rem;
-    color: #555;
+    color: var(--color-text);
     margin-top: 5px;
 }
 
 /* Футер */
 footer {
     padding: 40px 20px;
-    background-color: #f9f9f9;
+    background-color: var(--color-peach);
+    background: linear-gradient(to top, var(--color-peach), var(--color-light-bg));
     text-align: center;
 }
 
 footer p {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--color-heading);
     font-family: 'Cormorant Garamond', serif;
 }
 
