@@ -199,10 +199,15 @@
             <h2>Подтвердите ваше присутствие</h2>
             <p>Пожалуйста, подтвердите свое присутствие до 1 июля 2025 г.</p>
             
-            <form id="rsvpForm">
+            <form id="rsvpForm" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="rsvp">
+                <p class="hidden" style="display:none">
+                    <label>Не заполняйте это поле, если вы человек: <input name="bot-field" /></label>
+                </p>
+                
                 <div class="form-group">
                     <label for="name">Ваши имя и фамилия</label>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="name" required>
                 </div>
                 
                 <div class="form-group radio-group">
@@ -221,6 +226,14 @@
                 
                 <button type="submit">Отправить</button>
             </form>
+            
+            <div id="form-success" class="form-message success" style="display: none;">
+                Спасибо! Ваш ответ получен.
+            </div>
+            
+            <div id="form-error" class="form-message error" style="display: none;">
+                Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.
+            </div>
         </section>
         
         <section class="contact-info">

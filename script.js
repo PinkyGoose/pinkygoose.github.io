@@ -3,9 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const rsvpForm = document.getElementById('rsvpForm');
     
     if (rsvpForm) {
+        // Проверяем, есть ли параметр success в URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            document.getElementById('form-success').style.display = 'block';
+            // Прокручиваем к сообщению об успехе
+            document.getElementById('form-success').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Netlify автоматически обрабатывает отправку формы,
+        // но мы можем добавить дополнительную валидацию перед отправкой
         rsvpForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             // Получаем значения полей
             const name = document.getElementById('name').value.trim();
             let attendance = '';
@@ -21,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Валидация формы
             if (!name || !attendance) {
-                alert('Пожалуйста, заполните все обязательные поля');
+                e.preventDefault();
+                document.getElementById('form-error').style.display = 'block';
+                document.getElementById('form-error').textContent = 'Пожалуйста, заполните все обязательные поля';
                 return;
             }
             

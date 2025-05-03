@@ -736,3 +736,26 @@ footer p {
         transform: translateY(0);
     }
 }
+
+/* Стили для сообщений формы */
+.form-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #2e7d32;
+}
+
+.error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #c62828;
+}
+
+.hidden {
+    display: none;
+}
