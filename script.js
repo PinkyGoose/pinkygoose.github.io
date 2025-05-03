@@ -123,4 +123,52 @@ document.addEventListener('DOMContentLoaded', function() {
     // Запуск анимации при загрузке и прокрутке
     animateTimeline();
     window.addEventListener('scroll', animateTimeline);
+    
+    // Слайдер для дресс-кода
+    function initDressCodeSlider() {
+        const images = document.querySelectorAll('.slider-image');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        
+        // Функция для переключения слайдов
+        function showSlide(index) {
+            // Скрываем все изображения и деактивируем все точки
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Показываем нужное изображение и активируем соответствующую точку
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            // Обновляем текущий индекс
+            currentIndex = index;
+        }
+        
+        // Автоматическое переключение слайдов каждые 5 секунд
+        function autoSlide() {
+            const nextIndex = (currentIndex + 1) % images.length;
+            showSlide(nextIndex);
+        }
+        
+        // Запускаем автоматическое переключение
+        const slideInterval = setInterval(autoSlide, 5000);
+        
+        // Обработчики кликов по точкам
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                showSlide(index);
+                
+                // Сбрасываем интервал при ручном переключении
+                clearInterval(slideInterval);
+                setTimeout(() => {
+                    // Запускаем интервал заново
+                    setInterval(autoSlide, 5000);
+                }, 5000);
+            });
+        });
+    }
+    
+    // Инициализация слайдера дресс-кода
+    initDressCodeSlider();
 }); 
