@@ -6,19 +6,41 @@ document.addEventListener('DOMContentLoaded', function() {
         rsvpForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const attendance = document.getElementById('attendance').value;
-            const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
+            // Получаем значения полей
+            const name = document.getElementById('name').value.trim();
+            let attendance = '';
             
-            // Здесь вы можете добавить код для отправки данных на сервер
-            // Например, через fetch API или другой метод
+            // Получаем значение радиокнопок
+            const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+            for (const radio of attendanceRadios) {
+                if (radio.checked) {
+                    attendance = radio.value;
+                    break;
+                }
+            }
             
-            // Для демонстрации просто покажем сообщение
-            alert(`Спасибо, ${name}! Ваш ответ принят.`);
-            rsvpForm.reset();
+            // Валидация формы
+            if (!name || !attendance) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+            
+            // Отображаем индикатор загрузки
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
+            
+            // Здесь должен быть код для отправки данных
+            // Для демонстрации просто показываем сообщение
+            setTimeout(() => {
+                alert(`Спасибо, ${name}! Ваш ответ принят.`);
+                rsvpForm.reset();
+                
+                // Восстанавливаем кнопку
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }, 1000);
         });
     }
     
