@@ -535,4 +535,103 @@ footer p {
         min-width: auto;
     }
 }
+
+/* Календарь */
+.calendar-section {
+    padding: 60px 20px;
+    background-color: var(--color-light-bg);
+    text-align: center;
+}
+
+.calendar-section h2 {
+    margin-bottom: 40px;
+}
+
+.calendar {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.calendar-header {
+    background-color: var(--color-pink);
+    padding: 15px;
+    color: var(--color-heading);
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px 0;
+    background-color: var(--color-light-bg);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.calendar-weekdays div {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px;
+    gap: 5px;
+}
+
+.calendar-days div {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    position: relative;
+}
+
+.calendar-days .empty {
+    background: none;
+}
+
+.wedding-day {
+    background-color: var(--color-pink);
+    border-radius: 50%;
+    font-weight: 600;
+    color: var(--color-heading) !important;
+    position: relative;
+}
+
+.ring-marker {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    animation: floatRing 3s ease-in-out infinite;
+}
+
+@keyframes floatRing {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(5px) rotate(10deg);
+    }
+    50% {
+        transform: translateX(0) rotate(0deg);
+    }
+    75% {
+        transform: translateX(-5px) rotate(-10deg);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
 }
