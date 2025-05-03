@@ -30,9 +30,9 @@ body {
 /* Заголовок */
 header {
     text-align: center;
-    padding: 60px 20px;
-    background-color: var(--color-pink);
-    background: linear-gradient(to bottom, var(--color-pink), var(--color-light-bg));
+    padding: 40px 20px 60px;
+    background: linear-gradient(to bottom, var(--color-light-bg), var(--color-pink), var(--color-light-bg));
+    margin-top: -5px; /* Убираем возможный зазор между фото и заголовком */
 }
 
 .header-content {
@@ -502,6 +502,10 @@ footer p {
     .time-block span:first-child {
         font-size: 2rem;
     }
+    
+    .hello-svg {
+        width: 80%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -533,6 +537,14 @@ footer p {
     .time-block {
         width: calc(50% - 10px);
         min-width: auto;
+    }
+    
+    .hello-svg {
+        width: 90%;
+    }
+    
+    header {
+        padding: 30px 20px 50px;
     }
 }
 
@@ -633,5 +645,49 @@ footer p {
     }
     100% {
         transform: translateX(0) rotate(0deg);
+    }
+}
+
+/* Приветственное фото с SVG */
+.welcome-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.welcome-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.welcome-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hello-svg {
+    width: 70%;
+    max-width: 400px;
+    height: auto;
+    animation: fadeInAndFloat 2s ease-in-out forwards;
+}
+
+@keyframes fadeInAndFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
