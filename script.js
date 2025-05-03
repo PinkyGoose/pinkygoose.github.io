@@ -6,12 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
         rsvpForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const attendance = document.getElementById('attendance').value;
-            const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
+            // Получаем значения полей
+            const name = document.getElementById('name').value.trim();
+            let attendance = '';
+            
+            // Получаем значение радиокнопок
+            const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+            for (const radio of attendanceRadios) {
+                if (radio.checked) {
+                    attendance = radio.value;
+                    break;
+                }
+            }
+            
+            // Валидация формы
+            if (!name || !attendance) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
             
             // Отображаем индикатор загрузки
             const submitButton = this.querySelector('button[type="submit"]');
@@ -19,39 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = true;
             submitButton.textContent = 'Отправка...';
             
-            // URL вашего Google Apps Script
-            const scriptUrl = 'https://script.google.com/macros/s/AKfycbyq7ojbaX_LJEl4r-pDSMO3sJfpH06GjJdrVMRpkFyj1Kddq9h36NROivaAFjWoCiPt/exec';
-            
-            // Отправляем данные через Google Apps Script
-            fetch(scriptUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    phone,
-                    attendance,
-                    guests: parseInt(guests),
-                    message
-                }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Показываем сообщение об успехе
+            // Здесь должен быть код для отправки данных
+            // Для демонстрации просто показываем сообщение
+            setTimeout(() => {
                 alert(`Спасибо, ${name}! Ваш ответ принят.`);
                 rsvpForm.reset();
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
-            })
-            .finally(() => {
+                
                 // Восстанавливаем кнопку
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
-            });
+            }, 1000);
         });
     }
     
