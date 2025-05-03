@@ -284,7 +284,39 @@ h3 {
     font-weight: 500;
     color: var(--color-heading);
 }
+.gifts-note {
+    padding: 50px 20px;
+    background-color: var(--color-light-bg);
+    text-align: center;
+}   
 
+.flowers-note {
+    padding: 50px 20px;
+    background-color: var(--color-light-bg);
+    text-align: center;
+}
+
+.gifts-note h2 {
+    margin-bottom: 20px;
+}
+
+.flowers-note h2 {
+    margin-bottom: 20px;
+}
+
+.gifts-note p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.7;
+}   
+
+.flowers-note p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.7;
+}   
 /* Примечание о детях */
 .kids-note {
     padding: 50px 20px;
