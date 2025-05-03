@@ -94,10 +94,9 @@ h3 {
 }
 
 .venue-name {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 5px;
-    font-family: 'Cormorant Garamond', serif;
 }
 
 .venue-address {
@@ -234,6 +233,7 @@ h3 {
 
 /* Примечание о детях */
 .kids-note {
+    font-size: 1.1rem;
     padding: 40px 20px;
     background-color: var(--color-light-bg);
     text-align: center;
@@ -468,7 +468,7 @@ footer {
 }
 
 footer p {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: var(--color-heading);
     font-family: 'Cormorant Garamond', serif;
 }
@@ -503,7 +503,9 @@ footer p {
     .hello-svg {
         width: 60%;
     }
-    
+    .waiting-svg {
+        width: 60%;
+    }
     .date-svg {
         width: 50%;
     }
@@ -544,7 +546,12 @@ footer p {
         width: 70%;
         margin-bottom: 15px;
     }
+    .waiting-svg {
+        width: 70%;
+        margin-bottom: 15px;
+    }
     
+
     .date-svg {
         width: 60%;
     }
@@ -703,7 +710,13 @@ footer p {
     animation: fadeInAndFloat 2s ease-in-out forwards;
     margin-bottom: 10px;
 }
+.waiting-svg {
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 10px;
 
+}
 .date-svg {
     width: 60%;
     max-width: 450px;
