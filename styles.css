@@ -12,6 +12,13 @@
     --color-text: #5a5a5a;
     --color-heading: #4a4a4a;
     --color-light-bg: #fff9f5;
+    --color-accent: #ff5757;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --border-radius: 10px;
+    --transition-main: all 0.3s ease;
 }
 
 body {
@@ -31,9 +38,15 @@ body {
 /* Заголовок */
 header {
     text-align: center;
-    padding: 40px 20px 60px;
-    background: linear-gradient(to bottom, var(--color-light-bg), var(--color-pink), var(--color-light-bg));
-    margin-top: -5px; /* Убираем возможный зазор между фото и заголовком */
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, white, var(--color-light-bg) 30%, var(--color-peach) 70%, var(--color-light-bg));
+    margin-top: -5px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .header-content {
@@ -57,8 +70,20 @@ h1 {
 
 h2 {
     font-size: 2.2rem;
-    margin: 15px 0;
+    margin: 0 0 30px;
     font-weight: 400;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--color-accent), transparent);
+    bottom: -10px;
+    left: 20%;
 }
 
 h3 {
@@ -107,20 +132,54 @@ h3 {
     color: var(--color-text);
 }
 
-.map-button {
+.map-button, .chat-button, .contact-button, .contact-button.whatsapp, .contact-button.telegram, button[type="submit"] {
     display: inline-block;
     background-color: var(--color-peach);
     color: var(--color-heading);
     text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
     letter-spacing: 1px;
-    transition: background-color 0.3s;
+    transition: var(--transition-main);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: none;
+    cursor: pointer;
 }
 
-.map-button:hover {
+.map-button:hover, .chat-button:hover,.contact-button.whatsapp:hover, 
+.contact-button.telegram:hover, .contact-button:hover, button[type="submit"]:hover {
     background-color: var(--color-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Переопределение специфичных стилей для кнопок */
+/* .contact-button.whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.contact-button.telegram {
+    background-color: #0088cc;
+    color: white;
+}
+
+.contact-button.whatsapp:hover {
+    background-color: #22c35e;
+}
+
+.contact-button.telegram:hover {
+    background-color: #0077b5;
+} */
+
+/* Адаптивность для кнопок */
+@media (max-width: 480px) {
+    .map-button, .chat-button, .contact-button, button[type="submit"] {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
 }
 
 /* Таймлайн */
@@ -128,30 +187,53 @@ h3 {
     padding: 60px 20px;
     background-color: var(--color-mint);
     background: linear-gradient(to bottom, var(--color-light-bg), var(--color-mint), var(--color-light-bg));
+    text-align: center;
+}
+
+.timeline h2 {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .timeline-container {
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
+}
+
+/* Удаляем вертикальную линию */
+.timeline-container::before {
+    display: none;
 }
 
 .timeline-item {
     display: flex;
+    justify-content: flex-start;
     margin-bottom: 40px;
-    position: relative;
+    align-items: center;
 }
 
 .timeline-time {
-    flex: 0 0 80px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-heading);
-    font-family: 'Cormorant Garamond', serif;
+    background-color: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    font-weight: 500;
+    margin-right: 20px;
+    flex-shrink: 0;
 }
 
 .timeline-content {
-    flex: 1;
-    padding-left: 20px;
+    text-align: left;
+}
+
+.timeline-content h3 {
+    margin-bottom: 5px;
 }
 
 .timeline-content p {
@@ -203,8 +285,8 @@ h3 {
     padding-bottom: 133.33%; /* Соотношение сторон 3:4 для вертикальных фото */
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
 }
 
 .slider-image {
@@ -229,10 +311,11 @@ h3 {
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: #ddd;
+    border: 2px solid var(--color-peach);
+    background-color: transparent;
     margin: 0 5px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -388,10 +471,6 @@ h3 {
 
 .form-group {
     margin-bottom: 25px;
-    text-align: left;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 label {
@@ -407,13 +486,20 @@ input[type="tel"],
 select,
 textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    color: var(--color-text);
-    background-color: rgba(255, 255, 255, 0.9);
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: var(--transition-main);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: var(--color-peach);
+    box-shadow: 0 0 0 3px rgba(249, 201, 169, 0.3);
+    outline: none;
 }
 
 .radio-group {
@@ -439,21 +525,25 @@ textarea {
     font-weight: 400;
 }
 
-button {
+button, .button {
     background-color: var(--color-peach);
     color: var(--color-heading);
     border: none;
-    padding: 14px 40px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Montserrat', sans-serif;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 0.9rem;
     font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition-main);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-transform: uppercase;
 }
 
-button:hover {
+button:hover, .button:hover {
     background-color: var(--color-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 /* Контактная информация */
@@ -500,13 +590,13 @@ button:hover {
     font-size: 1.2rem;
 }
 
-.contact-button.whatsapp:hover {
+/* .contact-button.whatsapp:hover {
     background-color: #25D366;
-}
-
+} */
+/* 
 .contact-button.telegram:hover {
     background-color: #0088cc;
-}
+} */
 
 /* Обратный отсчет */
 .countdown {
@@ -569,12 +659,17 @@ footer p {
     }
     
     h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .timeline-time {
-        flex: 0 0 60px;
-        font-size: 1.3rem;
+        width: 60px;
+        height: 60px;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
     }
     
     .details-column {
@@ -624,11 +719,6 @@ footer p {
         font-size: 1.2rem;
     }
     
-    .timeline-time {
-        flex: 0 0 50px;
-        font-size: 1.2rem;
-    }
-    
     .time-block {
         width: calc(50% - 10px);
         min-width: auto;
@@ -654,6 +744,21 @@ footer p {
     .dress-code-slider {
         max-width: 300px;
     }
+    
+    .timeline-item {
+        flex-direction: row;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+    
+    .timeline-time {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .timeline-content {
+        text-align: left;
+    }
 }
 
 /* Календарь */
@@ -668,24 +773,19 @@ footer p {
 }
 
 .calendar {
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
     overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-main);
+}
+
+.calendar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .calendar-header {
-    background-color: var(--color-pink);
-    padding: 15px;
-    color: var(--color-heading);
-}
-
-.calendar-header h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-family: 'Cormorant Garamond', serif;
+    background: linear-gradient(to right, var(--color-pink), var(--color-peach));
 }
 
 .calendar-weekdays {
@@ -857,7 +957,16 @@ footer p {
 
 /* Стили для секций */
 section {
-    padding: 50px 20px;
+    padding: 60px 20px;
+    position: relative;
+}
+
+section:nth-child(odd) {
+    background-color: var(--color-light-bg);
+}
+
+section:nth-child(even) {
+    background-color: white;
 }
 
 section h2 {
@@ -962,5 +1071,98 @@ p {
     
     .venue-name {
         font-size: 1.1rem;
+    }
+}
+
+/* Добавление декоративных элементов */
+.section-divider {
+    height: 40px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.section-divider::before {
+    content: '♥';
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    position: relative;
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+.section-divider::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-pink), transparent);
+    top: 50%;
+    left: 10%;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Улучшенные карточки и контейнеры */
+.card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    padding: 25px;
+    transition: var(--transition-main);
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Раздел присоединения к чату */
+.chat-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.chat-section h2 {
+    margin-bottom: 20px;
+}
+
+.chat-section p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: var(--color-text);
+}
+
+.chat-button {
+    display: inline-block;
+    background-color: var(--color-peach);
+    color: var(--color-heading);
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: var(--transition-main);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.chat-button:hover {
+    background-color: var(--color-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 480px) {
+    .chat-button {
+        padding: 10px 25px;
+        font-size: 0.9rem;
     }
 }
