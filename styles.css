@@ -187,24 +187,30 @@ h3 {
     padding: 60px 20px;
     background-color: var(--color-mint);
     background: linear-gradient(to bottom, var(--color-light-bg), var(--color-mint), var(--color-light-bg));
+    text-align: center;
+}
+
+.timeline h2 {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .timeline-container {
+    max-width: 600px;
+    margin: 0 auto;
     position: relative;
 }
 
+/* Удаляем вертикальную линию */
 .timeline-container::before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--color-pink), var(--color-peach));
-    left: 80px;
-    top: 0;
+    display: none;
 }
 
 .timeline-item {
-    margin-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    align-items: center;
 }
 
 .timeline-time {
@@ -216,13 +222,18 @@ h3 {
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow-soft);
-    z-index: 2;
     position: relative;
+    font-weight: 500;
+    margin-right: 20px;
+    flex-shrink: 0;
 }
 
 .timeline-content {
-    flex: 1;
-    padding-left: 20px;
+    text-align: left;
+}
+
+.timeline-content h3 {
+    margin-bottom: 5px;
 }
 
 .timeline-content p {
@@ -651,13 +662,13 @@ footer p {
         font-size: 1.8rem;
     }
     
-    .timeline-container::before {
-        left: 40px;
-    }
-    
     .timeline-time {
         width: 60px;
         height: 60px;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-content h3 {
         font-size: 1.2rem;
     }
     
@@ -732,6 +743,21 @@ footer p {
     }
     .dress-code-slider {
         max-width: 300px;
+    }
+    
+    .timeline-item {
+        flex-direction: row;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+    
+    .timeline-time {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .timeline-content {
+        text-align: left;
     }
 }
 
