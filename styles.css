@@ -39,9 +39,7 @@ body {
 header {
     text-align: center;
     padding: 60px 20px;
-    background: linear-gradient(-45deg, var(--color-light-bg), var(--color-pink), var(--color-peach), var(--color-light-bg));
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    background: linear-gradient(to bottom, white, var(--color-light-bg) 30%, var(--color-peach) 70%, var(--color-light-bg));
     margin-top: -5px;
 }
 
@@ -134,20 +132,54 @@ h3 {
     color: var(--color-text);
 }
 
-.map-button {
+.map-button, .chat-button, .contact-button, .contact-button.whatsapp, .contact-button.telegram, button[type="submit"] {
     display: inline-block;
     background-color: var(--color-peach);
     color: var(--color-heading);
     text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
     letter-spacing: 1px;
-    transition: background-color 0.3s;
+    transition: var(--transition-main);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: none;
+    cursor: pointer;
 }
 
-.map-button:hover {
+.map-button:hover, .chat-button:hover,.contact-button.whatsapp:hover, 
+.contact-button.telegram:hover, .contact-button:hover, button[type="submit"]:hover {
     background-color: var(--color-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Переопределение специфичных стилей для кнопок */
+/* .contact-button.whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.contact-button.telegram {
+    background-color: #0088cc;
+    color: white;
+}
+
+.contact-button.whatsapp:hover {
+    background-color: #22c35e;
+}
+
+.contact-button.telegram:hover {
+    background-color: #0077b5;
+} */
+
+/* Адаптивность для кнопок */
+@media (max-width: 480px) {
+    .map-button, .chat-button, .contact-button, button[type="submit"] {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
 }
 
 /* Таймлайн */
@@ -237,9 +269,13 @@ h3 {
 }
 
 .slider-container {
-    box-shadow: var(--shadow-medium);
-    border-radius: var(--border-radius);
+    width: 100%;
+    height: 0;
+    padding-bottom: 133.33%; /* Соотношение сторон 3:4 для вертикальных фото */
+    position: relative;
     overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
 }
 
 .slider-image {
@@ -266,8 +302,12 @@ h3 {
 .dot {
     width: 10px;
     height: 10px;
+    border-radius: 50%;
     border: 2px solid var(--color-peach);
     background-color: transparent;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .dot.active {
@@ -539,13 +579,13 @@ button:hover, .button:hover {
     font-size: 1.2rem;
 }
 
-.contact-button.whatsapp:hover {
+/* .contact-button.whatsapp:hover {
     background-color: #25D366;
-}
-
+} */
+/* 
 .contact-button.telegram:hover {
     background-color: #0088cc;
-}
+} */
 
 /* Обратный отсчет */
 .countdown {
@@ -1055,4 +1095,48 @@ p {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-medium);
+}
+
+/* Раздел присоединения к чату */
+.chat-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.chat-section h2 {
+    margin-bottom: 20px;
+}
+
+.chat-section p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: var(--color-text);
+}
+
+.chat-button {
+    display: inline-block;
+    background-color: var(--color-peach);
+    color: var(--color-heading);
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: var(--transition-main);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.chat-button:hover {
+    background-color: var(--color-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 480px) {
+    .chat-button {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
 }
